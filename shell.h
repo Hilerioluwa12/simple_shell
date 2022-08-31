@@ -7,5 +7,6 @@
 #include <string.h>
 #include <signal.h>
 void sigint_handler(int signal);
+char **splitline(char *lin);
 
 #endif
