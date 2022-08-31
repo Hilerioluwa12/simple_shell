@@ -1,17 +1,44 @@
 #include "shell.h"
 #define BUFSIZE 1024
 
+
+/**
+ * token_env - Tokenize the path to return folders
+ * @pa: The path string to convert to an array
+ * Return: An array of the directories
+ */
+
+char **token_env(char *pat)
+{
+	char *pat_capy = pat;
+	int j = 0;
+	char *token;
+	static char *arr[20] = {NULL};
+
+	if (pat == NULL)
+		return (NULL);
+
+	token = strtok(pat_copy, ":");
+	while (token != NULL)
+	{
+		arr[j++] = token;
+		token = strtok(NULL, ":");
+	}
+	return (arr);
+}
+
+
 /**
  * splitline - splits a line passed to it and store content in array
- * @line: line to be split
+ * @lin: line to be split
  *
  * Return: The array of tokens if successful
  */
 
 char **splitline(char *lin)
 {
-	int bufsiz = BUFSIZ, position = 0;
-	char *tokens = malloc(bufsiz sizeof(char *));
+	int bufsize = BUFSIZE, position = 0;
+	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 
 	if (!tokens)
