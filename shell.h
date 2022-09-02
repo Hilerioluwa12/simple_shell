@@ -9,5 +9,6 @@
 void sigint_handler(int signal);
 char **splitline(char *lin);
 char **token_env(char *pat);
+char *readline(void);
 
 #endif
