@@ -10,7 +10,7 @@
 
 char **token_env(char *pat)
 {
-	char *pat_capy = pat;
+	char *pat_copy = pat;
 	int j = 0;
 	char *token;
 	static char *arr[20] = {NULL};
