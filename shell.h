@@ -10,11 +10,10 @@
 void sigint_handler(int signal);
 char **splitline(char *lin);
 char **token_env(char *pat);
-<<<<<<< HEAD
 char *readline(void);
-=======
-int compile(char **args);
+int execute(char **args);
 char *path(char *command);
->>>>>>> b14cef598f5e6dc3dc483caa5e12ed996f247e5e
+
+
 
 #endif

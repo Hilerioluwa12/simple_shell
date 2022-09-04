@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
-  * compile - compile the commands entered by the user
+  * execute - Executes the commands entered by the user
   * @args: The list of commands and arguments the user entered
   * Return: 1 if succesful 0 if not
   */
 
-int compile(char **args)
+int execute(char **args)
 {
 	pid_t my_pid;
 	char *command = args[0];
@@ -33,7 +33,7 @@ int compile(char **args)
 			return (0);
 		}
 
-		if (compile(command, args, '\0') == -1)
+		if (execve(command, args, NULL) == -1)
 		{
 			perror("hsh");
 		}
