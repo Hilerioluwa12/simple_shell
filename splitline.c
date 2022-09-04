@@ -8,17 +8,17 @@
  * Return: An array of the directories
  */
 
-char **token_env(char *pat)
+char **token_env(char *path)
 {
-	char *pat_copy = pat;
+	char *path_copy = path;
 	int j = 0;
 	char *token;
 	static char *arr[20] = {NULL};
 
-	if (pat == NULL)
+	if (path == NULL)
 		return (NULL);
 
-	token = strtok(pat_copy, ":");
+	token = strtok(path_copy, ":");
 	while (token != NULL)
 	{
 		arr[j++] = token;

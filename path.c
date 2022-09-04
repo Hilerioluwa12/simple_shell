@@ -11,8 +11,8 @@ char *path(char *command)
 {
 	struct stat st;
 	int i;
-	char *pat = _enviro("PATH");
-	char **dirs = token_env(pat);
+	char *path = _environ("PATH");
+	char **dirs = token_env(path);
 	char *cmd = command;
 	char *fullpath = malloc(sizeof(char) * 1024);
 
