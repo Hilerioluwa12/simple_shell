@@ -16,15 +16,15 @@ char *path(char *command)
 	char *cmd = command;
 	char *fullpath = malloc(sizeof(char) * 1024);
 
-	if (fullpath == '\0')
-		return ('\0');
+	if (fullpath == NULL)
+		return ("\0");
 
 	for (i = 0; dirs[i]; i++)
 	{
 		fullpath[0] = 0;
-		_strcat(fullpath, dirs[i]);
-		_strcat(fullpath, "/");
-		_strcat(fullpath, cmd);
+		_catstrg(fullpath, dirs[i]);
+		_catstrg(fullpath, "/");
+		_catstrg(fullpath, cmd);
 		if (stat(fullpath, &st) == 0)
 			return (fullpath);
 

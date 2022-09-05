@@ -25,12 +25,12 @@ int main(void)
 		{
 			return (0);
 		}
-		if (_cmpstrc(lin, "exit") == 0)
+		if (_cmpstrg(lin, "exit") == 0)
 		{
 			free(lin);
 			return (0);
 		}
-		if (_cmpstrc(lin, "env") == 0)
+		if (_cmpstrg(lin, "env") == 0)
 		{
 			_printenv();
 			free(lin);
