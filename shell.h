@@ -25,9 +25,13 @@ char *_environ(char *n);
 <<<<<<< HEAD
 int _strlen(char *s);
 void printenv(void);
+<<<<<<< HEAD
 =======
 char *_catstrg(char *loc, char *add);
 
 >>>>>>> c42d1554ed05f395a8e4d9885a826e9ef89a81e5
+=======
+int _cmpstrgc(char *str0, char *str1);
+>>>>>>> lola2
 
 #endif
