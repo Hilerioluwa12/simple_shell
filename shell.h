@@ -22,7 +22,12 @@ int execute(char **args);
 char *path(char *command);
 int _cmpstrn(char *str0, char *str1, int n);
 char *_environ(char *n);
+<<<<<<< HEAD
 int _strlen(char *s);
 void printenv(void);
+=======
+char *_catstrg(char *loc, char *add);
+
+>>>>>>> c42d1554ed05f395a8e4d9885a826e9ef89a81e5
 
 #endif
