@@ -25,20 +25,12 @@ int main(void)
 		{
 			return (0);
 		}
-<<<<<<< HEAD
-		if (_cmpstrg(lin, "exit") == 0)
-=======
 		if (_cmpstrgc(lin, "exit") == 0)
->>>>>>> lola2
 		{
 			free(lin);
 			return (0);
 		}
-<<<<<<< HEAD
-		if (_cmpstrg(lin, "env") == 0)
-=======
 		if (_cmpstrgc(lin, "env") == 0)
->>>>>>> lola2
 		{
 			printenv();
 			free(lin);
