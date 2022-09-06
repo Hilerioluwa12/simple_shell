@@ -25,5 +25,8 @@ char *_environ(char *n);
 char *_catstrg(char *loc, char *add);
 int _strlen(char *s);
 void printenv(void);
+int _strlen(char *s);
+void printenv(void);
+char *_catstrg(char *loc, char *add);
 
 #endif
