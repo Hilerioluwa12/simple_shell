@@ -23,6 +23,7 @@ char *path(char *command);
 int _cmpstrn(char *str0, char *str1, int n);
 char *_environ(char *n);
 char *_catstrg(char *loc, char *add);
-
+int _strlen(char *s);
+void printenv(void);
 
 #endif

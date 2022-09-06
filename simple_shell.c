@@ -32,7 +32,7 @@ int main(void)
 		}
 		if (_cmpstrg(lin, "env") == 0)
 		{
-			_printenv();
+			printenv();
 			free(lin);
 			continue;
 		}
