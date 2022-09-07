@@ -1,31 +1,35 @@
 #include "shell.h"
 
 /**
- *_uitoa - convert an integer to string
- *@count: integer to be converted
- *Return: string
+ * _atoi - a function that converts string to integer.
+ * @s: An input string.
+ * Return: integer from conversion.
  */
-char *_uitoa(unsigned int count)
+int _atoi(char *s)
 {
-	char *numstr = NULL;
-	unsigned int tmp = 0, digits = 0;
+	int sign = 1;
+	unsigned int total = 0;
+	char null_flag = 0;
 
-	tmp = count;
-	for (digits = 0; tmp != 0; digits++)
+	if (s == NULL)
+		return (0);
+	while (*s)
 	{
-		tmp /= 10;
+		if (*s == '-')
+			sign *= -1;
+		if (*s >= '0' && *s <= '9')
+		{
+			null_flag = 1;
+			total = total * 10 + (*s - '0');
+		}
+		else if (*s < '0' || *s > '9')
+		{
+			if (null_flag == 1)
+				break;
+		}
+		s++;
 	}
-	numstr = malloc(sizeof(char) * (digits + 1));
-	if (numstr == NULL)
-	{
-		perror("Fatal Error");
-		exit(127);
-	}
-	numstr[digits] = '\0';
-	for (--digits; count; --digits)
-	{
-		numstr[digits] = (count % 10) + '0';
-		count /= 10;
-	}
-	return (numstr);
+	if (sign < 0)
+		total = (-1 * (total));
+	return (total);
 }

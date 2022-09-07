@@ -1,22 +1,22 @@
 #include "shell.h"
 
+
 /**
- * _cmpstrn - comparing number of bytes in strings
- * @str0: first string to be compared
- * @str1: second string to be compared
- *
- * Return: integer value
+ * _strcmp - A funtion that compares two strings
+ * @s1: string 1
+ * @s2: string 2
+ * Return: 1 if strings are the same, 0 if not
  */
-
-int _cmpstrn(char *str0, char *str1)
+int _strcmp(char *s1, char *s2)
 {
-	int b = 0;
-	int i = 0;
+	unsigned int i = 0;
 
-	while (str0[b] == str1[b] && str0[b] != '\0')
+	while (s1[i])
 	{
-		b++;
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
 	}
-	i += str0[b] - str1[b];
-	return (i);
+
+	return (1);
 }

@@ -1,22 +1,17 @@
 #include "shell.h"
 
 /**
- * cpystrg - prints n elements of an array of integers
- * @loc: input
- * @add: input
- * Return: dest
+ * _strcpy - A function that copies a string to another string
+ * @dest: The pointer to the copyed string
+ * @src: The pointer to string to copy for
+ * Return: A pointer to copied string
  */
-
-char *cpystrg(char *loc, char *add)
+char *_strcpy(char *dest, char *src)
 {
-	char *i = loc;
+	char *aux = dest;
 
-	while (*add != '\0')
-	{
-		*loc = *add;
-		add++;
-		loc++;
-	}
-	*loc = '\0';
-	return (i);
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (aux);
 }

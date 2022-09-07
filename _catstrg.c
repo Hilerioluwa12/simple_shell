@@ -1,25 +1,20 @@
 #include "shell.h"
 
 /**
- * _catstrg - Concatenate two strings passed to it
- * @loc: The location of string
- * @add: The string to be added
- *
- * Return: Pointer to the new string
+ * _strcat - a function that concatenates two strings.
+ * @dest: an input string
+ * @src: an input string
+ * Return: A pointer to the resulting string
  */
-
-char *_catstrg(char *loc, char *add)
+char *_strcat(char *dest, char *src)
 {
-	int l = 0, k = 0;
+	char *temp = dest;
 
-	l = _strlen(loc);
+	while (*dest)
+		dest++;
 
-	while (*(add + k) != '\0')
-	{
-		*(loc + l) = *(add + k);
-		l++;
-		k++;
-	}
-	*(loc + l) = '\0';
-	return (loc);
+	*dest++ = '/';
+	while (*src)
+		*dest++ = *src++;
+	return (temp);
 }

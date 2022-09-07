@@ -1,18 +1,21 @@
 #include "shell.h"
 
 /**
- *_error - prints error msg
- *@line: number line
- *@args: name of the program
- *@str: args cause the error
+ * msgerror - A function that prints message not found.
+ * @name: The name of the shell.
+ * @cicles: Number of cicles.
+ * @command: The pointer to tokenized command.
+ * Return: Nothing.
  */
-
-void _error(int line, char **args, char *str)
+void msgerror(char *name, int cicles, char **command)
 {
-	write(STDERR_FILENO, args[0], _strlen(args[0]));
-	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, _uitoa(line), _strlen(_uitoa(line)));
-	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, str, _strlen(str));
-	write(STDERR_FILENO, ": not found\n", 12);
+	char c;
+
+	c = cicles + '0';
+	write(STDOUT_FILENO, name, _strlen(name));
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, &c, 1);
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, command[0], _strlen(command[0]));
+	write(STDOUT_FILENO, ": not found\n", 12);
 }

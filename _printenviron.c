@@ -1,31 +1,19 @@
 #include "shell.h"
 
 /**
- *printenv_cmd - display all environment command
- *@cmd: command entered by user
- *Return: command line
+ * print_env - A function that prints all enviromental variables.
+ * @env: The pointer to enviromental variables.
+ * Return: Nothing.
  */
-char *printenv_cmd(char **cmd)
+void print_env(char **env)
 {
-	int i;
+	size_t i = 0, len = 0;
 
-	if (!_cmpstrgc(cmd[0], "exit"))
+	while (env[i])
 	{
-		clear_memory(cmd);
-		exit(EXIT_SUCCESS);
-	}
-	else if (!_cmpstrgc(cmd[0], "env"))
-	{
-		for (i = 0 ; environ[i] ; i++)
-		{
-			write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
-			write(STDOUT_FILENO, "\n", 1);
-		}
-		clear_memory(cmd);
-		return (NULL);
-	}
-	else
-	{
-		return (cmd[0]);
+		len = _strlen(env[i]);
+		write(STDOUT_FILENO, env[i], len);
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
 	}
 }
