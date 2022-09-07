@@ -2,15 +2,13 @@
 
 /**
  * _getPATH - A function to gets the full value from.
- * environmental variable PATH.
- * @env: The pointer to environmental variables
+ * enviromental variable PATH.
+ * @env: The pointer to enviromental variables.
  * Return: All tokenized pathways for commands.
  */
-
-char *_getPATH(char *env)
+char **_getPATH(char **env)
 {
-	char pathvalue = NULL;
-	pathways = NULL;
+	char *pathvalue = NULL, **pathways = NULL;
 	unsigned int i = 0;
 
 	pathvalue = strtok(env[i], "=");
