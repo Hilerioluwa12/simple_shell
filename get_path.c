@@ -1,39 +1,29 @@
 #include "shell.h"
 
 /**
- *path - locate path of a specific command
- *@filename: command name
- *Return: return specific command if exit
+ * _getPATH - A function to gets the full value from.
+ * environmental variable PATH.
+ * @env: The pointer to environmental variables
+ * Return: All tokenized pathways for commands.
  */
-char *path(char *filename)
-{
-	int i = 0;
-	char *token, *list_path, *path, *str_env, *slach = "/\0";
 
-	str_env = environ_path();
-	token = strtok(str_env, "=");
-	while (token)
+char *_getPATH(char *env)
+{
+	char pathvalue = NULL;
+	pathways = NULL;
+	unsigned int i = 0;
+
+	pathvalue = strtok(env[i], "=");
+	while (env[i])
 	{
-		token = strtok(NULL, ":");
-		if (token)
+		if (_strcmp(pathvalue, "PATH"))
 		{
-			list_path = malloc(sizeof(char) * (_strlen(token) +
-				_strlen(filename) + 2));
-			cpystrg(list_path, token);
-			path = _catstrg(_catstrg(list_path, slach), filename);
-			if (access(path, F_OK) == 0)
-			{
-				break;
-			}
+			pathvalue = strtok(NULL, "\n");
+			pathways = tokening(pathvalue, ":");
+			return (pathways);
 		}
-		else
-		{
-			path = NULL;
-			break;
-		}
-		free(list_path), list_path = NULL;
 		i++;
+		pathvalue = strtok(env[i], "=");
 	}
-	free(str_env), str_env = NULL;
-	return (path);
+	return (NULL);
 }
