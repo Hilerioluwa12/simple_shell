@@ -28,13 +28,13 @@ char *_strdup(char *str)
 		return (NULL);
 	}
 
-	while (*(str +j) != '\0')
+	while (*(str + j) != '\0')
 	{
 		cp[j] = str[j];
 		j++;
 	}
 
-	*(cp +j) = '\0';
+	*(cp + j) = '\0';
 
 	return (cp);
 }
