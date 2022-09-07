@@ -30,6 +30,6 @@ void printenv(void);
 char *_catstrg(char *loc, char *add);
 int _cmpstrgc(char *str0, char *str1);
 char *_catstrg(char *loc, char *add);
-
+void _error(char **args, char *str);
 
 #endif
