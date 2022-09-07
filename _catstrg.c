@@ -16,7 +16,7 @@ char *_catstrg(char *loc, char *add)
 
 	while (*(add + k) != '\0')
 	{
-		*(loc + l) = *(add +k);
+		*(loc + l) = *(add + k);
 		l++;
 		k++;
 	}
