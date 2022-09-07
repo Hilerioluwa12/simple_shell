@@ -4,20 +4,19 @@
  * _cmpstrn - comparing number of bytes in strings
  * @str0: first string to be compared
  * @str1: second string to be compared
- * @n: number of bytes to be checked
- * Return: less than 0 if str0 is less than str1
- * greater 0 if str1 is less than str0 and 0 if equal to eachother
+ *
+ * Return: integer value
  */
 
-int _cmpstrn(char *str0, char *str1, int n)
+int _cmpstrn(char *str0, char *str1)
 {
-	if (!n)
-		return (0);
-	if (*str0 == *str1)
-		return (*str0 ? _cmpstrn(str0 + 1, str1 + 1, n - 1) : 0);
-	if (*str0)
-		return (1);
-	if (*str1)
-		return (-1);
-	return (*str0 - *str1);
+	int b = 0;
+	int i = 0;
+
+	while (str0[b] == str1[b] && str0[b] != '\0')
+	{
+		b++;
+	}
+	i += str0[b] - str1[b];
+	return (i);
 }	

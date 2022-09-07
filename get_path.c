@@ -19,7 +19,7 @@ char *path(char *filename)
 		{
 			list_path = malloc(sizeof(char) * (_strlen(token) +
 				_strlen(filename) + 2));
-			/* _cpystrg(list_path, token); */
+			cpystrg(list_path, token);
 			path = _catstrg(_catstrg(list_path, slach), filename);
 			if (access(path, F_OK) == 0)
 			{

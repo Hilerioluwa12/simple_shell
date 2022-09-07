@@ -10,15 +10,16 @@
 
 char *_catstrg(char *loc, char *add)
 {
-	int len, k;
+	int l = 0, k = 0;
 
-	len = 0;
-	while (loc[len] != '\0')
-		len++;
+	l = _strlen(loc);
 
-	for (k = 0; add[k] != '\0'; len++)
-		loc[len] = add[k];
-
-	loc[len] = '\0';
+	while (*(add + k) != '\0')
+	{
+		*(loc + l) = *(add +k);
+		l++;
+		k++;
+	}
+	*(loc + l) = '\0';
 	return (loc);
 }
