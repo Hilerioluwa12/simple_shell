@@ -16,12 +16,12 @@ int main(int argc __attribute__((unused)), char **argv)
 	{
 		line++;
 		buff = prompt_cmd();
-		args = store_args(buff, delims);
+		args = arg_save(buff, delims);
 		buff = NULL;
 		buff = parsing_cmd(args);
 		if (buff)
 		{
-			str = _path(args[0]);
+			str = path(args[0]);
 			error = strdup(args[0]);
 			free(args[0]), args[0] = NULL;
 			args[0] = _strdup(str);

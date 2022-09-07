@@ -18,16 +18,16 @@ char **arg_save(char *buf, char *ls)
 
 	/* handle malloc allocation error*/
 
-	args[i] = _strdup(token);
-	while (token && ++i)
+	args[k] = _strdup(token);
+	while (token && ++k)
 	{
 		token = strtok(NULL, ls);
 		if (token)
 		{
-			args[i] = _strdup(token);
+			args[k] = _strdup(token);
 		}
 	}
-	args[i] = NULL;
+	args[k] = NULL;
 	if (count_args(args[0], '/') > 1)
 	{
 		token = strtok(args[0], "/");
