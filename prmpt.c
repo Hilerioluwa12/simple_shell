@@ -1,6 +1,17 @@
 #include "shell.h"
 
 /**
+ * prompt - A function that prints the prompt
+ * Return: Nothing.
+ */
+void prompt(void)
+{
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "$ ", 2);
+}
+
+
+/**
  * handle - A function to handle Ctr + C signal.
  * @signals: The signal to handle.
  * Return: Nothing.
@@ -8,9 +19,7 @@
 void handle(int signals)
 {
 	(void)signals;
-	printf("\n");
-	write(STDOUT_FILENO, "hsh$ ", 2);
-	fflush(stdout);
+	write(STDOUT_FILENO, "\n$ ", 3);
 }
 
 
@@ -26,7 +35,6 @@ void _EOF(char *buffer)
 		free(buffer);
 		buffer = NULL;
 	}
-
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free(buffer);

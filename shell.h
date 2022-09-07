@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <string.h>
 
+extern char **environ;
+#define _POSIX_C_SOURCE 200809L
 
 int main(int ac, char **av, char **env);
 void prompt(void);
@@ -21,7 +23,9 @@ int change_dir(const char *path);
 
 void execute(char **command, char *name, char **env, int cicles);
 void print_env(char **env);
+char *_strdup(char *str);
 char **_getPATH(char **env);
+char *environ_path(void);
 void msgerror(char *name, int cicles, char **command);
 
 char **tokening(char *buffer, const char *s);
