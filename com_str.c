@@ -19,4 +19,4 @@ int _cmpstrn(char *str0, char *str1)
 	}
 	i += str0[b] - str1[b];
 	return (i);
-}	
+}
