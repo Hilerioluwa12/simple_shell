@@ -1,51 +1,49 @@
 #include "shell.h"
 
 /**
-  * main - Function that starts a simple shell
-  *
-  * Return: 1 on success
-  */
-
-int main(void)
+ *main - shell program
+ *@argc: not used
+ *@argv: name of program
+ *Return: 0
+ **/
+int main(int argc __attribute__((unused)), char **argv)
 {
-	int status = 1;
-	char *lin;
-	char **args;
+	char *buff, delims[] = " ", *str, *error, **args;
+	int line = 0;
+	pid_t pid = 0;
 
-	signal(SIGINT, sigint_handler);
-	while (status)
+	while (1)
 	{
-		status = isatty(STDIN_FILENO);
-
-		if (status == 1)
-			write(STDOUT_FILENO, "$ ", 2);
-
-		lin = readline();
-		if (!lin)
+		line++;
+		buff = prompt_cmd();
+		args = store_args(buff, delims);
+		buff = NULL;
+		buff = parsing_cmd(args);
+		if (buff)
 		{
-			return (0);
+			str = _path(args[0]);
+			error = strdup(args[0]);
+			free(args[0]), args[0] = NULL;
+			args[0] = _strdup(str);
+			free(str), str = NULL;
+			if (!args[0])
+			{
+				_error(line, &argv[0], error);
+				free(error), error = NULL;
+			}
+			else
+			{
+				free(error), error = NULL;
+				pid = fork();
+				if (pid == 0)
+				{
+					execve(args[0], args, NULL);
+				}
+				else if (pid > 0)
+					waitpid(pid, NULL, 0);
+			}
 		}
-		if (_cmpstrgc(lin, "exit") == 0)
-		{
-			free(lin);
-			return (0);
-		}
-		if (_cmpstrgc(lin, "env") == 0)
-		{
-			printenv();
-			free(lin);
-			continue;
-		}
-		args = splitline(lin);
-		if (args == NULL)
-		{
-			free(lin);
-			free(args);
-			continue;
-		}
-		status = execute(args);
-		free(lin);
-		free(args);
+		clear_memory(args);
 	}
 	return (0);
 }

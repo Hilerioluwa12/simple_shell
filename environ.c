@@ -1,20 +1,32 @@
 #include "shell.h"
 
 /**
- * _environ - finds the environment variable requested by user
- * @n: environment variable requested by user
- * Return: value of the environment variable
+ *environ_path - extract path environ variable
+ *Return: sting of path env variable
  */
 
-char *_environ(char *n)
+char *environ_path(void)
 {
-	int b, lengt;
+	int i = -1, j, flag = 1;
+	char *str_path, *target = "PATH";
 
-	lengt = _strlen(n);
-	for (b = 0; environ[b]; b++)
+	while (environ[++i] && flag)
 	{
-		if (_cmpstrn(environ[b], n, lengt) == 0)
-			return (environ[b] + lengt + 1);
+		if (environ[i][0] == target[0])
+		{
+			for (j = 1; j < 3; j++)
+			{
+				if (environ[i][j] != target[j])
+				{
+					break;
+				}
+				else if (environ[i][2] == target[2])
+				{
+					str_path = _strdup(environ[i]);
+					flag = 0;
+				}
+			}
+		}
 	}
-	return (NULL);
+	return (str_path);
 }
