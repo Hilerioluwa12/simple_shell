@@ -12,7 +12,7 @@ char **arg_save(char *buf, char *ls)
 	char **args, *token, *str;
 	int nb, k = 0;
 
-	nb = count_args(buf, ' ');
+	nb = arg_count(buf, ' ');
 	token = strtok(buf, ls);
 	args =  malloc(sizeof(char *) * (nb + 1));
 
