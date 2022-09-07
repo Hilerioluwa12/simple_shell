@@ -1,49 +1,46 @@
 #include "shell.h"
 
 /**
- *main - Function that start a shell program
- *@argc: unused
- *@argv: program name
- *Return: 0
- **/
-int main(int argc __attribute__((unused)), char **argv)
+ * main - A function that runs our shell.
+ * @ac: The number of inputed arguments.
+ * @av: The pointer to array of inputed arguments.
+ * @env: The pointer to array of enviromental variables.
+ * Return: Always 0.
+ */
+int main(int ac, char **av, char **env)
 {
-	char *buf, ls[] = " ", *str, *error, **args;
-	int line = 0;
-	pid_t pid = 0;
+	char *buffer = NULL, **command = NULL;
+	size_t buf_size = 0;
+	ssize_t chars_readed = 0;
+	int cicles = 0;
+	(void)ac;
 
 	while (1)
 	{
-		line++;
-		buf = commd_pmpt();
-		args = arg_save(buf, ls);
-		buf = NULL;
-		buf = printenv_cmd(args);
-		if (buf)
+		cicles++;
+		prompt();
+		signal(SIGINT, handle);
+		chars_readed = getline(&buffer, &buf_size, stdin);
+		if (chars_readed == EOF)
+			_EOF(buffer);
+		else if (*buffer == '\n')
+			free(buffer);
+		else
 		{
-			str = path(args[0]);
-			error = strdup(args[0]);
-			free(args[0]), args[0] = NULL;
-			args[0] = _strdup(str);
-			free(str), str = NULL;
-			if (!args[0])
-			{
-				_error(line, &argv[0], error);
-				free(error), error = NULL;
-			}
+			buffer[_strlen(buffer) - 1] = '\0';
+			command = tokening(buffer, " \0");
+			free(buffer);
+			if (_strcmp(command[0], "exit") != 0)
+				shell_exit(command);
+			else if (_strcmp(command[0], "cd") != 0)
+				change_dir(command[1]);
 			else
-			{
-				free(error), error = NULL;
-				pid = fork();
-				if (pid == 0)
-				{
-					execve(args[0], args, NULL);
-				}
-				else if (pid > 0)
-					waitpid(pid, NULL, 0);
-			}
+				create_child(command, av[0], env, cicles);
 		}
-		clear_memory(args);
+		fflush(stdin);
+		buffer = NULL, buf_size = 0;
 	}
-	return (0);
+	if (chars_readed == -1)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

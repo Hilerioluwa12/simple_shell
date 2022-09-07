@@ -1,20 +1,49 @@
 #include "shell.h"
 
 /**
- * clear_memory - free heap memory
- * @args: input
+ * free_dp - A function that frees all the memory allocated for command.
+ * @command: The pointer to allocated memory to free.
+ * Return: Nothing.
  */
-
-void clear_memory(char **args)
+void free_dp(char **command)
 {
-	int k;
+	size_t i = 0;
 
-	if (args && *args)
+	if (command == NULL)
+		return;
+
+	while (command[i])
 	{
-		for (k = 0; args[k]; k++)
-		{
-			free(args[k]), args[k] = NULL;
-		}
-		free(args), args = NULL;
+		free(command[i]);
+		i++;
 	}
+
+	if (command[i] == NULL)
+		free(command[i]);
+	free(command);
+}
+
+
+/**
+ * free_exit - A function that frees all the memory allocated and exit.
+ * @command: The pointer to allocated command memory to free.
+ * Return: Nothing.
+ */
+void free_exit(char **command)
+{
+	size_t i = 0;
+
+	if (command == NULL)
+		return;
+
+	while (command[i])
+	{
+		free(command[i]);
+		i++;
+	}
+
+	if (command[i] == NULL)
+		free(command[i]);
+	free(command);
+	exit(EXIT_FAILURE);
 }
