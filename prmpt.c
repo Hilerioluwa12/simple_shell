@@ -1,6 +1,6 @@
 #include "shell.h"
 
-/** 
+/**
  * prompt - A function that prints the prompt
  * Return: Nothing.
  */
