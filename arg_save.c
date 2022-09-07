@@ -28,7 +28,7 @@ char **arg_save(char *buf, char *ls)
 		}
 	}
 	args[k] = NULL;
-	if (count_args(args[0], '/') > 1)
+	if (arg_count(args[0], '/') > 1)
 	{
 		token = strtok(args[0], "/");
 		while (token)
