@@ -20,7 +20,7 @@ char *_uitoa(unsigned int count);
 
 char *environ_path(void);
 char *commd_pmpt(void);
-char *parsing_cmd(char **cmd);
+char *printenv_cmd(char **cmd);
 char **arg_save(char *buf, char *ls);
 char **store_args(char *buff, char *delims);
 char *path(char *filename);

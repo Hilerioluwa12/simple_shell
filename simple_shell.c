@@ -1,25 +1,25 @@
 #include "shell.h"
 
 /**
- *main - shell program
- *@argc: not used
- *@argv: name of program
+ *main - Function that start a shell program
+ *@argc: unused
+ *@argv: program name
  *Return: 0
  **/
 int main(int argc __attribute__((unused)), char **argv)
 {
-	char *buff, delims[] = " ", *str, *error, **args;
+	char *buf, ls[] = " ", *str, *error, **args;
 	int line = 0;
 	pid_t pid = 0;
 
 	while (1)
 	{
 		line++;
-		buff = prompt_cmd();
-		args = arg_save(buff, delims);
-		buff = NULL;
-		buff = parsing_cmd(args);
-		if (buff)
+		buf = commd_pmpt();
+		args = arg_save(buf, ls);
+		buf = NULL;
+		buf = printenv_cmd(args);
+		if (buf)
 		{
 			str = path(args[0]);
 			error = strdup(args[0]);
