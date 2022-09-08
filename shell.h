@@ -1,7 +1,6 @@
 #ifndef SHELL_H_
 #define SHELL_H_
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -167,7 +166,6 @@ int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-
 /* toem_errors1.c */
 int _erratoi(char *);
 void print_error(info_t *, char *);
@@ -201,30 +199,17 @@ int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
-extern char **environ;
-#define _POSIX_C_SOURCE 200809L
-
 /* toem_getenv.c */
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
-
-<<<<<<< HEAD
-void execute(char **command, char *name, char **env, int cicles);
-void print_env(char **env);
-char *_strdup(char *str);
-char **_getPATH(char **env);
-char *environ_path(void);
-void msgerror(char *name, int cicles, char **command);
-=======
 /* toem_history.c */
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
 int read_history(info_t *info);
 int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
->>>>>>> Abayo1
 
 /* toem_lists.c */
 list_t *add_node(list_t **, const char *, int);
